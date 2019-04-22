@@ -5,9 +5,9 @@
 # 2019/04/21 Ponchimeow week1 super challenge
 echo "輸出: "
 curl -s https://github.com/$1 | grep -oP '(?<=<span class="p-name vcard-fullname d-block overflow-hidden" itemprop="name">)[^<]*|(?<=<div class="p-note user-profile-bio js-user-profile-bio mb-3"><div>)[^<]*|(?<=<span class="p-label">)[^<]*|(?<=<a rel="nofollow me" href="https://medium.com/@hulitw">)[^<]*'
-# curl -s
-# grep -o 
-# grep -P
+# curl -s   --silent                Silent mode，Don't output anything.
+# grep -o   --only-matching         show only the part of a line matching PATTERN
+# grep -P   --perl-regexp           PATTERN is a Perl regular expression
 # 	正則比對，可想成他是從左到右按照規則去比對，像是 abcd5fg，而你的規則是要取到數字，那他就會列出 abcd5，看到5然後停止
 #	(?<=Y)X  Positive lookbehind，要找 X，前方(左側)必須為 Y
 #	(?<!Y)X  Negative lookbehind，要找 X，前方(左側)不可為 Y
