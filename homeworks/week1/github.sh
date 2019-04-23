@@ -4,7 +4,7 @@
 # History:
 # 2019/04/21 Ponchimeow week1 super challenge
 echo "輸出: "
-curl -s https://github.com/$1 | grep -oP '(?<=<span class="p-name vcard-fullname d-block overflow-hidden" itemprop="name">)[^<]*|(?<=<div class="p-note user-profile-bio js-user-profile-bio mb-3"><div>)[^<]*|(?<=<span class="p-label">)[^<]*|(?<=<a rel="nofollow me" href="https://medium.com/@hulitw">)[^<]*'
+curl -s https://github.com/$1 | grep -oP '(?<=<span class="p-name vcard-fullname d-block overflow-hidden" itemprop="name">)[^<]*|(?<=<div class="p-note user-profile-bio js-user-profile-bio mb-3"><div>)[^<]*|(?<=<span class="p-label">)[^<]*|(?<=<a rel="nofollow me" href=")[^"]*'
 # curl -s   --silent                Silent mode，Don't output anything.
 # grep -o   --only-matching         show only the part of a line matching PATTERN
 # grep -P   --perl-regexp           PATTERN is a Perl regular expression
