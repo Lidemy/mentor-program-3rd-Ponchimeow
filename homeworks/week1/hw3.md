@@ -1,6 +1,6 @@
 ## 教你朋友 CLI
 1. command line 到底是什麼?
-所謂的 command line 簡稱 cml ，是在目前常見到的圖形化介面還未出現前，你要跟機器溝通用的東西，他通常不支援滑鼠，所以你幾乎都要用打字的呢!
+所謂的 command line 簡稱 CLI ，是在目前常見到的圖形化介面還未出現前，你要跟機器溝通用的東西，他通常不支援滑鼠，所以你幾乎都要用打字的呢!
 
 2. 想用 command line 建立一個叫做 wifi 的資料夾，並且在裡面建立一個叫 afu.js 的檔案 ?
 要如何做到你想要的功能呢? 讓我們一步一步來吧~~
@@ -9,38 +9,38 @@
 	2. 使用我給你的 cmder ，打開資料夾點選 cmder.exe吧! 
 	3. 接著應該就能看到一個黑黑的小視窗了吧，這就是我們用來與電腦溝通的東西
 	4. λ右側的地方就是我們敲打鍵盤會顯示文字的地方，上方則是我們命令執行的地方或稱為路徑，讓我們叫電腦幫我們做點事情吧
-	```cml
+	```CLI
 	C:\Users\Users\>
 	λ
 	```
 	5. 要創立資料夾，我們可以輸入 mkdir 來建立，而後面空一格則輸入資料夾要取的名字，創立一個 wifi 資料夾，輸入完後記得按下 Enter 告訴電腦我們要執行這句指令
-	```cml
+	```CLI
 	C:\Users\Users\
 	λ mkdir wifi
 	```
 	6. 接下來要怎麼知道有沒有建立好呢? 讓我們輸入 ls 來顯示目前路徑下的檔案
-	```cml
+	```CLI
 	C:\Users\Users\
 	λ ls
 	wifi
 	```
 	7. 讓我們進到 wifi 資料夾吧!輸入 cd 空一格再輸入資料夾名稱就能進去嘍
-	```cml
+	```CLI
 	C:\Users\Users\
 	λ cd wifi
 	```
 	輸入後就能看到路徑改變了
-	```cml
+	```CLI
 	C:\Users\Users\wifi
 	λ 
 	```
 	8. 接著讓我們再建立一個檔案吧，輸入 touch 空一格再輸入檔案名字
-	```cml
+	```CLI
 	C:\Users\Users\wifi
 	λ touch afu.js
 	```
 	9. 再使用我們剛說過的 ls 來確認是不是建立好了
-	```cml
+	```CLI
 	C:\Users\Users\wifi
 	λ ls
 	afu.js
