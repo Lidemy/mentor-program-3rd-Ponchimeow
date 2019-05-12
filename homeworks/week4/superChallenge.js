@@ -1,10 +1,11 @@
 const request = require('request');
+const process = require('process');
 
-const url = 'https://api.twitch.tv/helix';
+const url = 'https://api.twitch.tv/helix/';
 const client = '96wokzodjysizi8omcetpzfvvohppb';
 
 const p = new Promise(((resolve, reject) => {
-  request.get(`${url}/games?name=League of Legends`, {
+  request.get(`${url}/games?name=${process.argv[2]}`, {
     headers: {
       'Client-ID': client,
     },
@@ -15,15 +16,15 @@ const p = new Promise(((resolve, reject) => {
       return;
     }
     setTimeout(() => {
-      const lolId = JSON.parse(body).data[0].id;
-      resolve(lolId);
+      const gameId = JSON.parse(body).data[0].id;
+      resolve(gameId);
     }, 1500);
   }));
 }));
 
-function getStreamStart(lolId) {
+function getStreamStart(gameId) {
   return new Promise(((resolve, reject) => {
-    request.get(`${url}/streams?game_id=${lolId}&first=100`, {
+    request.get(`${url}/streams?game_id=${gameId}&first=100`, {
       headers: {
         'Client-ID': client,
       },
