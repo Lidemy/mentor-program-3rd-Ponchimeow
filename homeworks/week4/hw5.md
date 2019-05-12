@@ -10,94 +10,76 @@
 
 3. 假設你現在是個餐廳平台，需要提供 API 給別人串接並提供基本的 CRUD 功能，包括：回傳所有餐廳資料、回傳單一餐廳資料、刪除餐廳、新增餐廳、更改餐廳，你的 API 會長什麼樣子？請提供一份 API 文件。
 
-* [餐廳平台 API , on HackMD](https://hackmd.io/s/rkV6r4N2V)
-
----
-
 # foodStallManger
 
 餐廳平台 API 能讓使用者查詢、新增、刪除、更改餐廳名單。
 
-
-url: https://foodstallmanger/api/
-
-id： 正整數，餐廳編號
-name: 餐廳名稱
+server root url: https://foodstallmanger.com.tw/api/
 
 # 查詢 [ _search ]
 ## 餐廳列表
-### 查詢所有餐廳 [POST]
+### 查詢所有餐廳 [GET]
 
-POST: /api/_search
+paths: /api/_search
 
 回應格式 ( JSON )
 |參數|類型|說明|
 |-|-|-|
-|id|integer|餐廳編號
 |name|string|餐廳名稱
+|address|string|餐廳地址
+|tel|int|餐廳電話|
 
-範例
-```
-/api/_search?list
-```
+### 查詢單一餐廳 [GET]
 
-### 查詢單一餐廳 [POST]
+paths: /api/_search
 
-POST: /api/_search
-
-|參數|必填|說明|格式|
+請求格式 ( JSON )
+|參數|必填|類型|說明|
 |--|--|--|--|
-|id|Y|餐廳編號|integer|
-|name|N|餐廳名稱|string
+|name|Y|string|餐廳名稱|
+|address|N|string|餐廳地址
+|tel|N|int|餐廳電話|
 
-範例
-```
-/api/_search?id=餐廳編號&name=餐廳名稱
-```
+
+
 
 # 刪除 [ _del ]
 ## 刪除餐廳 [DELETE]
 
-DELETE: api/_del
+paths: api/_del
 
-|參數|必填|說明|格式|
+
+請求格式 ( JSON )
+|參數|必填|類型|說明|
 |--|--|--|--|
-|id|Y|餐廳編號|integer|
-|name|N|餐廳名稱|string
+|name|Y|string|餐廳名稱|
+|address|N|string|餐廳地址
+|tel|N|int|餐廳電話|
 
-範例
-```
-/api/_del?id=餐廳編號
-```
+
 
 # 新增 [ _add ]
 ## 新增餐廳 [POST]
 
-POST: /api/_add
+paths: /api/_add
 
-|參數|必填|說明|格式|
+請求格式 ( JSON )
+|參數|必填|類型|說明|
 |--|--|--|--|
-|id|Y|餐廳編號|integer|
-|name|Y|餐廳名稱|string
+|name|Y|string|餐廳名稱|
+|address|Y|string|餐廳地址
+|tel|Y|int|餐廳電話|
 
-範例
-```
-/api/_add?id=餐廳編號&name=餐廳名稱
-```
 
 # 修改 [ _update ]
 ## 更改餐廳 [PATCH]
 
-PATCH: /api/_update
+paths: /api/_update
 
-請求參數
-
-|參數|必填|說明|格式|
+請求格式 ( JSON )
+|參數|必填|類型|說明|
 |--|--|--|--|
-|id|Y|餐廳編號|integer|
-|name|Y|餐廳名稱|string|
+|name|Y|string|餐廳名稱|
+|address|N|string|餐廳地址
+|tel|N|int|餐廳電話|
 
-範例
-```
-/api/_update?id=餐廳編號&name=餐廳名稱
-```
