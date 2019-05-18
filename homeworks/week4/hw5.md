@@ -11,73 +11,57 @@
 
 3. 假設你現在是個餐廳平台，需要提供 API 給別人串接並提供基本的 CRUD 功能，包括：回傳所有餐廳資料、回傳單一餐廳資料、刪除餐廳、新增餐廳、更改餐廳，你的 API 會長什麼樣子？請提供一份 API 文件。
 
-# foodStallManger
+* foodStallManger
+  * 餐廳平台 API 能讓使用者查詢、新增、刪除、更改餐廳名單。
+  * base url: https://foodstallmanger.com.tw/
 
-餐廳平台 API 能讓使用者查詢、新增、刪除、更改餐廳名單。
+* 查詢
+  * 查詢所有餐廳
+      * Method： GET
+      * Paths： /restaurants/_search
+    * 參數： _limit： 設定回傳資料數量  
+    * 範例：/restaurants/_search?_limit=10
+    * 回應：
+      * name： 餐廳名稱
+      * address： 餐廳地址
+      * tel： 餐廳電話
 
-server root url: https://foodstallmanger.com.tw/api/
+  * 查詢單一餐廳
+      * Method： GET
+      * Paths： /restaurants/_search/:id
+    * 參數： 無 
+    * 範例： /restaurants/_search/34
+    * 回應：
+      * name： 餐廳名稱
+      * address： 餐廳地址
+      * tel： 餐廳電話
 
-# 查詢 [ _search ]
-## 餐廳列表
-### 查詢所有餐廳 [GET]
+* 刪除
+  * 刪除餐廳 
+      * Method: DELETE
+      * Paths: /restaurants/:id
+    * 參數： 無
+    * 範例：/restaurants/_search/34
+    * 回應： 無
 
-paths: /api/_search
+* 新增
+  * 新增餐廳
+      * Method: POST
+      * Paths: /restaurants
+    * 參數： 
+      * name： 餐廳名稱
+      * address： 餐廳地址
+      * tel： 餐廳電話
+    * 範例：/restaurants/_search/34
+    * 回應： 無
 
-回應格式 ( JSON )
-|參數|類型|說明|
-|-|-|-|
-|name|string|餐廳名稱
-|address|string|餐廳地址
-|tel|int|餐廳電話|
-
-
-### 查詢單一餐廳 [GET]
-
-paths: /api/_search
-
-請求格式 ( JSON )
-|參數|必填|類型|說明|
-|--|--|--|--|
-|name|Y|string|餐廳名稱|
-|address|N|string|餐廳地址
-|tel|N|int|餐廳電話|
-
-
-# 刪除 [ _del ]
-## 刪除餐廳 [DELETE]
-
-paths: api/_del
-
-請求格式 ( JSON )
-|參數|必填|類型|說明|
-|--|--|--|--|
-|name|Y|string|餐廳名稱|
-|address|N|string|餐廳地址
-|tel|N|int|餐廳電話|
-
-
-# 新增 [ _add ]
-## 新增餐廳 [POST]
-
-paths: /api/_add
-
-請求格式 ( JSON )
-|參數|必填|類型|說明|
-|--|--|--|--|
-|name|Y|string|餐廳名稱|
-|address|Y|string|餐廳地址
-|tel|Y|int|餐廳電話|
-
-
-# 修改 [ _update ]
-## 更改餐廳 [PATCH]
-
-paths: /api/_update
-
-請求格式 ( JSON )
-|參數|必填|類型|說明|
-|--|--|--|--|
-|name|Y|string|餐廳名稱|
-|address|N|string|餐廳地址
-|tel|N|int|餐廳電話|
-
+* 修改
+  * 更改餐廳
+      * Method: PATCH
+      * Paths: /restaurants/:id
+    * 參數： 
+      * name： 餐廳名稱
+      * address： 餐廳地址
+      * tel： 餐廳電話
+    * 範例：/restaurants/34
+    * 回應： 無
