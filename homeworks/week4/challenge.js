@@ -1,70 +1,55 @@
 const request = require('request');
 
-const url = 'https://api.twitch.tv/helix';
-const client = '96wokzodjysizi8omcetpzfvvohppb';
+const URL = 'https://api.twitch.tv/helix';
+const CLIENT_ID = '96wokzodjysizi8omcetpzfvvohppb';
+let count = 0;
+let cursor = '';
+let lolId;
 
 const p = new Promise(((resolve, reject) => {
-  request.get(`${url}/games?name=League of Legends`, {
+  request.get(`${URL}/games?name=League of Legends`, {
     headers: {
-      'Client-ID': client,
+      'Client-ID': CLIENT_ID,
     },
   },
   ((error, response, body) => {
-    if (error) {
-      reject(new Error(`Error in getId: ${error}`));
-      return;
-    }
-    setTimeout(() => {
-      const lolId = JSON.parse(body).data[0].id;
+    if (!error && response.statusCode === 200) {
+      lolId = JSON.parse(body).data[0].id;
       resolve(lolId);
-    }, 1500);
+    } else {
+      reject(new Error(`Error in getId: ${error}`));
+    }
   }));
 }));
 
-function getStreamStart(lolId) {
-  return new Promise(((resolve, reject) => {
-    request.get(`${url}/streams?game_id=${lolId}&first=100`, {
-      headers: {
-        'Client-ID': client,
-      },
-    }, (error, response, body) => {
-      if (error) {
-        reject(new Error(`Error in getStreamStart: ${error}`));
-        return;
-      }
+function getStream(gameId, after) {
+  let buildURL = `${URL}/streams?game_id=${gameId}&first=100`;
+  if (after !== undefined) {
+    buildURL += `&after=${after}`;
+  }
+  request.get(buildURL, {
+    headers: {
+      'Client-ID': CLIENT_ID,
+    },
+  }, (error, response, body) => {
+    if (!error && response.statusCode === 200) {
       const res = JSON.parse(body);
       const gameList = res.data;
-      const { cursor } = res.pagination;
       gameList.forEach((data) => {
         console.log(`${data.id} ${data.title}`);
       });
-      setTimeout(() => {
-        resolve(cursor);
-      }, 1500);
-    });
-  }));
-}
-
-function getStreamEnd(cursor) {
-  request.get(`${url}/streams?first=100&after=${cursor}`, {
-    headers: {
-      'Client-ID': client,
-    },
-  }, (error, response, body) => {
-    if (error) {
-      console.error(`Error in getStreamEnd: ${error}`);
-      return;
+      const { cursor: getCursor } = res.pagination;
+      cursor = getCursor;
+      count += gameList.length;
+    } else {
+      console.error(`Error in getStream: ${error}`);
     }
-    const res = JSON.parse(body);
-    const gameList = res.data;
-    gameList.forEach((data) => {
-      console.log(`${data.id} ${data.title}`);
-    });
+    if (count < 200) {
+      getStream(lolId, cursor);
+    }
   });
 }
-
-p.then(getStreamStart)
-  .then(getStreamEnd)
+p.then(getStream)
   .catch((error) => {
     console.warn(error);
   });
