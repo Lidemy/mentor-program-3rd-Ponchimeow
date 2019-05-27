@@ -21,6 +21,9 @@ module.exports = {
   ],
   rules: {
     "no-console": "off",
-	'linebreak-style': ["error", "windows"]
+	'linebreak-style': ["error", "windows"],
+    "editor.renderWhitespace": "boundary",
+    "camelcase": ["error", { "properties": "never" }],
+    
   },
 };
