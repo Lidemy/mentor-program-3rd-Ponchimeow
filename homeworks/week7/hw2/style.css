@@ -1,0 +1,117 @@
+*, :before, :after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: '微軟正黑體';
+}
+
+body {
+  background: rgba(134, 161, 221, 0.5);
+}
+
+.top__bg {
+  background: url(top__bg.png);
+  background-size: cover;
+  height: 250px;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+}
+
+.form {
+  position: relative;
+  background: white;
+  margin: auto;
+  padding: 20px 40px 15px 40px;
+  max-width: 640px;
+  border-top: 8px solid rgb(226, 189, 154);
+  top: -100px;
+}
+
+.form__header {
+  font-size: 34px;
+}
+
+.form__remind {
+  font-size: 14px;
+}
+
+.form__content {
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
+
+.form__title {
+  font-size: 18px;
+}
+
+span {
+  color: red;
+}
+
+.form__describe {
+  margin-top: 0.5rem;
+  font-size: 14px;
+}
+
+input {
+  border: none;
+  margin-top: 1rem;
+}
+
+#type1, #type2 {
+  margin-right: 0.5rem;
+}
+
+#submit {
+  display: block;
+  width: 100px;
+  height: 40px;
+  border: 0;
+  background: rgb(41, 173, 129);
+  border-radius: 10px;
+  color: white;
+}
+
+input:not(#type1):not(#type2):not(#submit) {
+  width: 300px;
+  border: none;
+  box-shadow: none;
+  border-bottom: 1px solid #c6c6c6;
+}
+
+input:focus {
+  outline: none;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  width: 320px;
+}
+
+.bar:before {
+  content: '';
+  height: 1px;
+  width: 0;
+  bottom: 0px;
+  position: absolute;
+  background: rgb(101, 177, 240);
+  transition: 300ms ease all;
+  left: 0%;
+}
+
+input:focus~.bar:before {
+  width: 320px;
+}
+
+@media screen and (max-width: 650px) {
+  .form {
+    min-width: 640px;
+  }
+}

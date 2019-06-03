@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: '微軟正黑體';
+}
+
+.calculator {
+  position: absolute;
+  width: 400px;
+  height: 380px;
+  top: 50%;
+  left: 50%;
+  margin: -200px 0 0 -190px;
+  border: 0.01rem solid rgba(0, 0, 0, 0.1);
+}
+
+.result {
+  height: 20%;
+  line-height: 76px;
+  font-size: 40px;
+  background: white;
+  text-align: right;
+  padding-right: 3px;
+  border: 0.01rem solid rgba(0, 0, 0, 0.1);
+}
+
+.keypad {
+  display: table;
+  height: 80%;
+  width: 100%;
+}
+
+.keypad__row-pad {
+  display: table-row;
+}
+
+.keypad__row-pad__cell {
+  display: table-cell;
+  width: 25%;
+  line-height: 50px;
+  text-align: center;
+  font-size: 20px;
+  border: 0.01rem solid rgba(0, 0, 0, 0.1);
+}
+
+.keypad__row-pad__cell:hover {
+  background: rgb(236, 230, 230);
+}
