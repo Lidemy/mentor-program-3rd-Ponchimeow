@@ -103,7 +103,11 @@ keypad.addEventListener('click', (e) => {
         result.innerHTML = result.innerText ** 2;
         break;
       case '⅟ₓ':
-        result.innerHTML = 1 / result.innerHTML;
+        if (result.innerText === '0') {
+          result.innerText = 'ERROR';
+        } else {
+          result.innerHTML = 1 / result.innerHTML;
+        }
         break;
       default:
         break;
