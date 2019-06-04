@@ -47,5 +47,7 @@ Windows
   [CodePen, e.preventDefault()](https://codepen.io/Ponchimeow/pen/KLEorv)
 * event.stopPropagation()
   * 阻止傳遞，停止往父層的冒泡動作
-  * 如連結內，原本預期為從裡到外傳遞而跳出`alert`3~1，在2與3的中間一層加上`event.stopPropagation()`後只會回傳3
+  * 如連結內，原本預期為從裡到外傳遞而跳出`alert`3~1，在2與3的中間一層加上監聽事件`event.stopPropagation()`後只會回傳3
+  * 若`event.addEventListene('${method}',function(){},false)`，第三個參數改為 true，監聽變為捕捉就觸發，則傳遞會在捕捉就停止，所以不會有任何`alert`。
+
   [CodePen,Capture Bubbling](https://codepen.io/Ponchimeow/pen/vwPxdg)
