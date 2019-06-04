@@ -5,7 +5,16 @@ let operation = false;
 let num = 0;
 
 keypad.addEventListener('click', (e) => {
-  if (e.target.classList.contains('num')) {
+  // 18再上去就破格子
+  if (result.innerText.length > 17) {
+    result.innerText = 'ERROR';
+  } else if (result.innerText === 'ERROR') {
+    if (e.target.classList.contains('num')) {
+      result.innerHTML = `${e.target.getAttribute('data-value')}`;
+      num = 0;
+      operation = false;
+    }
+  } else if (e.target.classList.contains('num')) {
     if (result.innerText === '0') {
       result.innerText = '';
     }
@@ -22,8 +31,7 @@ keypad.addEventListener('click', (e) => {
     } else {
       result.innerHTML += e.target.getAttribute('data-value');
     }
-  }
-  if (e.target.classList.contains('operator')) {
+  } else if (e.target.classList.contains('operator')) {
     switch (e.target.getAttribute('data-value')) {
       case '+':
         operator = '+';
@@ -38,7 +46,7 @@ keypad.addEventListener('click', (e) => {
         operator = '÷';
         break;
       case '=':
-        if (operation) {
+        if (!operation) {
           break;
         }
         if (operator === '+') {
@@ -69,6 +77,33 @@ keypad.addEventListener('click', (e) => {
         operator = '';
         num = 0;
         result.innerHTML = '0';
+        break;
+      case 'CE':
+        result.innerHTML = '0';
+        break;
+      case '±':
+        result.innerHTML = result.innerText * (-1);
+        break;
+      case '.':
+        if (result.innerText === '0') {
+          result.innerHTML = '0.';
+        } else if (result.innerText.indexOf('.') > 0) {
+          break;
+        } else {
+          result.innerHTML += '.';
+        }
+        break;
+      case '%':
+        result.innerHTML = result.innerText * 0.01;
+        break;
+      case '√':
+        result.innerHTML = Math.sqrt(result.innerText);
+        break;
+      case 'ₓ²':
+        result.innerHTML = result.innerText ** 2;
+        break;
+      case '⅟ₓ':
+        result.innerHTML = 1 / result.innerHTML;
         break;
       default:
         break;
