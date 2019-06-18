@@ -6,7 +6,7 @@ const url = 'https://dvwhnbka7d.execute-api.us-east-1.amazonaws.com/default/lott
 
 function changInfo(str, img, num) {
   title.innerText = str;
-  award.innerHTML = img;
+  award.innerHTML = `<img src="${img}">`;
   if (num === 'none') {
     title.style.color = 'white';
     title.style.margin = '40% 0 0 0';
@@ -18,19 +18,6 @@ function changInfo(str, img, num) {
   }
 }
 
-function first() {
-  changInfo('恭喜你中頭獎了！日本東京來回雙人遊！', '<img src="img/JapanAirlines.jpg">', 'first');
-}
-function second() {
-  changInfo('二獎！90 吋電視一台！', '<img src="img/tv.jpg">', 'second');
-}
-function third() {
-  changInfo('恭喜你抽中三獎：知名 YouTuber 簽名握手會入場券一張，bang！', '<img src="img/AI-youtube.jpg">', 'third');
-}
-function none() {
-  changInfo('銘謝惠顧', '', 'none');
-}
-
 function gotcha() {
   request.onload = function getNum() {
     if (request.status >= 200 && request.status < 400) {
@@ -39,16 +26,16 @@ function gotcha() {
       const res = json.prize;
       switch (res) {
         case 'FIRST':
-          first();
+          changInfo('恭喜你中頭獎了！日本東京來回雙人遊！', 'img/JapanAirlines.jpg', 'first');
           break;
         case 'SECOND':
-          second();
+          changInfo('二獎！90 吋電視一台！', 'img/tv.jpg', 'second');
           break;
         case 'THIRD':
-          third();
+          changInfo('恭喜你抽中三獎：知名 YouTuber 簽名握手會入場券一張，bang！', 'img/AI-youtube.jpg', 'third');
           break;
         case 'NONE':
-          none();
+          changInfo('銘謝惠顧', '', 'none');
           break;
         default:
           console.log('something is outof expected');
