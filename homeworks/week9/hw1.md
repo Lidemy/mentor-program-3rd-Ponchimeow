@@ -2,7 +2,7 @@
 
 | 欄位名稱        | 欄位型態     | 說明               |
 |---------------|-------------|-------------------|
-| id            |	integer     | 使用者 id          |
+| id            |	integer   | 使用者 id，主鍵     |
 | username      | VARCHAR(16) | 帳號               |
 | password      | VARCHAR(16) | 密碼               |
 | nickname      | VARCHAR(64) | 暱稱               |
@@ -10,18 +10,24 @@
 |               |             | 預設101為一般使用者 |
 |               |             | 222為管理員         |
 
-資料庫名稱：comment
+資料庫名稱：message ，主留言
 
 | 欄位名稱      | 欄位型態  |    說明                 |
 |-------------|-----------|------------------------|
-| id          | integer   | 留言id                  |
+| id          | integer   | 留言id，主鍵            |
 | content     | TEXT      | 留言內容                |
-| created_at  | DATATIME  | 留言建立時間             |
+| created_at  | DATETIME  | 留言建立時間             |
 | member_id   | integer   | 留言者id(對應 member id) |
-| upper_id    | integer   | 預設為null，若為子留言則會 |
-|             |           | 有值，值即表示這則子留言屬  |
-|             |           | 於哪一個留言下            |
 
+資料庫名稱: comment ，子留言
+
+| 欄位名稱      | 欄位型態  |    說明                 |
+|-------------|-----------|------------------------|
+| id          | integer   | 子留言id，主鍵           |
+| message_id  | integer   | 主留言id                |
+| member_id   | integer   | 留言者id(對應 member id) |
+| content     | TEXT      | 留言內容                |
+| created_at  | DATETIME  | 留言建立時間             |
 
 
 
@@ -40,13 +46,3 @@
 
 簡易流程
 ![](https://i.imgur.com/1avaWGb.png)
-
-```
-index.php     所有留言
-
-register.php        註冊會員
-
-admin.php           後台頁面
-admin_member.php    後台會員列表
-admin_comment.php   後台留言列表
-```
