@@ -28,15 +28,14 @@ Cookie 是一個實際存在的東西，http 協議中定義在 header 中的字
   * Persistent cookies：將會保留於硬碟中，直到時間到期或是刪除。
 
 ##  `include`、`require`、`include_once`、`require_once` 的差別
+* require
+  * 適合引入靜態程式碼
+  * 執行時若 require 進來的檔案發生錯誤，會顯示錯誤，且`不再往下執行`
+  * 多用於程式一開頭載入時就先讀取
 
 * include
-       1. 適合引入動態程式碼
-       2. 執行時若 include 進來的檔案發生錯誤，會顯示警告，但`不會停止`
-       3. 多用於程式流程敘述中，ex: if else、while、for 迴圈等
-
-* require
-       1. 適合引入靜態程式碼
-       2. 執行時若 require 進來的檔案發生錯誤，會顯示錯誤，且`不再往下執行`
-       3. 多用於程式一開頭載入時就先讀取
+  * 適合引入動態程式碼
+  * 執行時若 include 進來的檔案發生錯誤，會顯示警告，但`不會停止`
+  * 多用於程式流程敘述中，ex: if else、while、for 迴圈等
 
 include_once、require_once，基本上與 include、require 無異，唯在引入時會檢查檔案是否已有載入過，若有則不載入
