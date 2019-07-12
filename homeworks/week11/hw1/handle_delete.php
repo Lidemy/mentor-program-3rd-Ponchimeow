@@ -3,7 +3,7 @@ require_once "./conn.php";
 require_once "./check_access.php";
 $conn = sql();
 $username = passCode($conn);
-$memberId = getMemberId($conn,$username);
+$memberId = getMemberId($conn, $username);
 $id = $_POST['dataId'];
 $dataPart = $_POST['dataPart'];
 if ($dataPart === 'msg') {

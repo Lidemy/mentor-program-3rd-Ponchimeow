@@ -28,7 +28,7 @@ $username = passCode($conn);
     $resultNickname = $searchNickname->fetch_assoc();
     echo "<a class='nav-member-group__nickname'>$resultNickname[nickname]</a>";
     echo "<a class='nav-member-group__logout' href='./handle_logout.php'>登出</a>";
-    if (chkAdmin($conn, $username)) {
+    if (chkAdmin($conn, $username) === 'admin' || chkAdmin($conn, $username) === 'superadmin') {
         echo "<a class='nav-memmber-group__admin' href='./admin.php'>admin</a>";
     }
     echo "</div>";
@@ -130,13 +130,20 @@ if ($resContent->num_rows > 0) {
         echo "<p class='message-text'>$rowMsg[content]</p>";
         echo "</div>";
 // 子留言
-        $sqlComment = "SELECT distinct comment.id,comment.message_id as c_m_id, comment.content as comment_contnet, comment.created_at as comment_time,member.username as member_username, member.nickname as member_nickname
+        $sqlComment = "SELECT distinct
+        comment.id,
+        comment.message_id as c_m_id,
+        comment.content as comment_contnet,
+        comment.created_at as comment_time,
+        comment.hidden,
+        member.username as member_username,
+        member.nickname as member_nickname
         FROM Ponchimeow_MsgBoard_comment as comment
         LEFT JOIN Ponchimeow_MsgBoard_member as member ON member.id = comment.member_id
-        LEFT JOIN Ponchimeow_MsgBoard_message as message ON comment.message_id =" . $rowMsg["message_id"];
-        $resultComment = $conn->query($sqlComment);
-        if ($resultComment->num_rows > 0) {
-            while ($rowComment = $resultComment->fetch_assoc()) {
+        WHERE message_id =$rowMsg[id] AND hidden = '0'";
+        $resComment = $conn->query($sqlComment);
+        if ($resComment->num_rows > 0) {
+            while ($rowComment = $resComment->fetch_assoc()) {
                 if ($rowComment["c_m_id"] === $rowMsg["message_id"]) {
                     echo "<div class='comment'>";
                     echo "<div class='comment-list'>";
