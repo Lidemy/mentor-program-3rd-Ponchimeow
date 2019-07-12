@@ -140,7 +140,7 @@ if ($resContent->num_rows > 0) {
         member.nickname as member_nickname
         FROM Ponchimeow_MsgBoard_comment as comment
         LEFT JOIN Ponchimeow_MsgBoard_member as member ON member.id = comment.member_id
-        WHERE message_id =$rowMsg[id] AND hidden = '0'";
+        WHERE comment.message_id =$rowMsg[message_id] AND comment.hidden = '0'";
         $resComment = $conn->query($sqlComment);
         if ($resComment->num_rows > 0) {
             while ($rowComment = $resComment->fetch_assoc()) {
