@@ -28,7 +28,6 @@ function chkNickname($conn, $nickname)
     }
 }
 
-
 function chkUsername($conn, $username)
 {
     $sqlChkUsername = "SELECT username FROM Ponchimeow_MsgBoard_member WHERE username='" . $username . "'";
@@ -39,18 +38,15 @@ function chkUsername($conn, $username)
         die();
     }
 }
-chkNickname($conn,$nickname);
-chkUsername($conn,$username);
+chkNickname($conn, $nickname);
+chkUsername($conn, $username);
 
 // 將密碼加密
 $hashPassword = password_hash($password, PASSWORD_DEFAULT);
-
 $sqlRegister = "INSERT INTO Ponchimeow_MsgBoard_member(nickname, username, password) VALUE ('$nickname','$username','$hashPassword')";
 $result = $conn->query($sqlRegister);
-if ($chkNickname->num_rows === 0 && $chkUsername->num_rows === 0) {
-    if ($result) {
-        header('Location: ./login.php');
-    } else {
-        echo $conn->error;
-    }
+if ($result) {
+    header('Location: ./login.php');
+} else {
+    echo $conn->error;
 }

@@ -17,12 +17,10 @@ qs('.table').addEventListener('click', (e) => {
   const dataName = e.target.getAttribute('data-name');
   const dataMsgId = e.target.getAttribute('data-msg-id');
   const dataPart = e.target.getAttribute('data-part');
-  const text = e.target.parentNode.children[2].innerHTML;
-  const dataHidden = e.target.getAttribute('data-hidden');
-  const content = qs('.msg__input-content').value;
   let sendData = '';
   switch (e.target.getAttribute('data-name')) {
-    case 'edit':
+    case 'edit': {
+      const text = e.target.parentNode.children[2].innerHTML;
       // 判斷是否已有開啟編輯的欄位，若有則關閉已開啟的編輯欄位，並更換按鈕顯現
       if (qs('.msg__input-content') !== null) {
         cancel(tmpText);
@@ -34,12 +32,17 @@ qs('.table').addEventListener('click', (e) => {
       e.target.parentNode.children[7].style.display = 'none';
       e.target.parentNode.children[8].style.display = 'table-cell';
       break;
-    case 'send':
+    }
+    case 'send': {
+      const content = qs('.msg__input-content').value;
       sendData = `name=${dataName}&msgId=${dataMsgId}&part=${dataPart}&content=${content}`;
       break;
-    case 'hide':
+    }
+    case 'hide': {
+      const dataHidden = e.target.getAttribute('data-hidden');
       sendData = `name=${dataName}&msgId=${dataMsgId}&part=${dataPart}&hidden=${dataHidden}`;
       break;
+    }
     case 'cancel':
       cancel(tmpText);
       break;

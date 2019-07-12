@@ -21,7 +21,7 @@ $username = passCode($conn);
     echo "<a class='nav-member-group__register' href='./register.php'>註冊</a>";
     echo "<a class='nav-member-group__login' href='./login.php'>登入</a>";
     echo "</div>";
-} else if (isset($_COOKIE["passCode"])) {
+} else {
     echo "<div class='nav-member-group'>";
     $sqlNickname = "SELECT nickname FROM Ponchimeow_MsgBoard_member WHERE username='$username'";
     $searchNickname = $conn->query($sqlNickname);
@@ -48,7 +48,7 @@ $username = passCode($conn);
 if (isset($_COOKIE["passCode"])) {
     echo "<textarea class='publish-content' name='content' placeholder='$msg'></textarea>";
     echo "<button class='publish-button' type='button'>我要留言</button>";
-} else if (!isset($_COOKIE["passCode"])) {
+} else {
     echo "<a class='publish-info' href='./login.php'>留言請先登入</a>";
 }
 ;
@@ -65,7 +65,7 @@ $sqlContentAll = "SELECT member.id,member.nickname,member.username,message.id as
             WHERE message.hidden = '0'
             ORDER BY message.created_at DESC";
 $resContentAll = $conn->query($sqlContentAll);
-// ceil() => 回傳大於等於數字的最小整數, ex: ceil(2.3) => 3, ceil(0.3) => 1
+// ceil() => 回傳大於等於數字的最小整數
 $pages = ceil(($resContentAll->num_rows) / $per);
 if (!isset($_GET["page"])) {
     $page = 1;
