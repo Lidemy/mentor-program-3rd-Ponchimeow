@@ -1,7 +1,6 @@
 <?php require_once "./conn.php";
-require_once "./check_access.php";
-$conn = sql();
-$username = passCode($conn);
+require_once "./utils.php";
+require_once "./check_login.php";
 $identify = chkAdmin($conn, $username);
 if (!($identify === 'admin' || $identify === 'superadmin')) {
     die("who are you?");

@@ -1,5 +1,4 @@
 <?php require_once "./conn.php";
-$conn = sql();
 ?>
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
@@ -8,7 +7,7 @@ $conn = sql();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Week9 留言板</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
   <nav class="nav">
@@ -28,7 +27,7 @@ $conn = sql();
 ?>
     </div>
     <div class="member-group login-group">
-      <form method="POST" action="./handle_login.php">
+      <form method="POST" action="./controller/handle_login.php">
           <div class="member-group__field login-group__username">
             <input name="username" autocomplete="off"/>
             <label class="input__label">帳號</label>
@@ -45,6 +44,6 @@ $conn = sql();
       </form>
     </div>
   </div>
-  <script type="module" src="login.js"></script>
+  <script type="module" src="./js/login.js"></script>
 </body>
 </html>

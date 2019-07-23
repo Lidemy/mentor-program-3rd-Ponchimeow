@@ -1,7 +1,6 @@
 <?php
 require_once "./conn.php";
-require_once "./check_access.php";
-$conn = sql();
+require_once "./utils.php";
 $username = getUsername($conn);
 $identify = chkAdmin($conn, $username);
 if (!($identify === 'admin' || $identify === 'superadmin')) {
@@ -15,7 +14,7 @@ if (!($identify === 'admin' || $identify === 'superadmin')) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>admin_message</title>
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="./css/admin.css">
 </head>
 <body>
   <?php
@@ -49,6 +48,6 @@ while ($rowMsgList = $resMsgList->fetch_assoc()) {
 echo "</div>";
 echo "<a href='./admin.php'>admin</a>"
 ?>
-<script type="module" src="admin_message.js"></script>
+<script type="module" src="./js/admin_message.js"></script>
 </body>
 </html>

@@ -1,6 +1,4 @@
-<?php require_once "./conn.php";
-$conn = sql();
-?>
+<?php require_once "./conn.php";?>
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <head>
@@ -8,7 +6,7 @@ $conn = sql();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Week9 留言板</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
   <nav class="nav">
@@ -28,7 +26,7 @@ $conn = sql();
 ?>
     </div>
     <div class="member-group register-group">
-      <form method="POST" action="./handle_register.php">
+      <form method="POST" action="./controller/handle_register.php">
           <div class="member-group__field register-group__nickname"><input name="nickname" autocomplete="off"/><label class="input__label">暱稱 (最多16個字元)</label><span class="bar"></span></div>
           <div class="member-group__field register-group__username"><input name="username" autocomplete="off"/><label class="input__label">帳號</label><span class="bar"></span></div>
           <div class="member-group__field register-group__password"><input name="password" type="password"/><label class="input__label">密碼 (最多16個字元)</label><span class="bar"></span></div>
@@ -39,6 +37,6 @@ $conn = sql();
       </form>
     </div>
   </div>
-  <script type="module" src="register.js"></script>
+  <script type="module" src="./js/register.js"></script>
 </body>
 </html>

@@ -1,6 +1,5 @@
 <?php
 require_once "./conn.php";
-$conn = sql();
 $dataName = $_POST['name'];
 $msgId = $_POST['msgId'];
 $dataPart = $_POST['part'];

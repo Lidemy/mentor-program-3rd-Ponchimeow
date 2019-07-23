@@ -54,6 +54,10 @@ qs('.container').addEventListener('click', (e) => {
       if (content === '') {
         alert('內容不可空白');
         stop = true;
+      } else if (content === tmpText) {
+        alert('內容無改變');
+        cancel(tmpText);
+        stop = true;
       }
       sendData = `name=${dataName}&part=${dataPart}&id=${dataId}&content=${content}`;
       break;
@@ -78,7 +82,7 @@ qs('.container').addEventListener('click', (e) => {
   }
   if (!stop) {
     if (sendData !== '') {
-      request.open('POST', './handle_index.php', true); // false，同步，執行完動作後再更新畫面
+      request.open('POST', './controller/handle_index.php', true); // false，同步，執行完動作後再更新畫面
       request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
       request.send(sendData);
       window.location.reload();

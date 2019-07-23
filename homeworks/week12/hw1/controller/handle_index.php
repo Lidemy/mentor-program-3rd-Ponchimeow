@@ -1,8 +1,7 @@
 <?php
-require_once "./conn.php";
-require_once "./check_access.php";
-$conn = sql();
-$username = getUserName($conn);
+require_once "../conn.php";
+require_once "../check_login.php";
+require_once "../utils.php";
 if ($username === null) {
     die("無法辨識訪客");
 }
@@ -12,13 +11,14 @@ $dataName = $_POST['name'];
 $dataPart = $_POST['part'];
 $id = $_POST['id']; // reply 傳入為主留言 id，delete 傳入當前留言 id
 
-$content = htmlspecialchars($_POST['content'], ENT_QUOTES, 'utf-8');
+$content = $_POST['content'];
 
 if ($dataPart === 'msg') {
     $db = "Ponchimeow_MsgBoard_message";
 } else if ($dataPart === 'comment') {
     $db = "Ponchimeow_MsgBoard_comment";
 }
+
 switch ($dataName) {
     case 'publish':
         if (empty($content)) {
@@ -33,10 +33,10 @@ switch ($dataName) {
         if (empty($content)) {
             die();
         }
-        $sql = "INSERT INTO $db(message_id,member_id,content)
-                VALUE(?,?,?)";
+        $sql = "INSERT INTO $db(parent_id,member_id,content,level)
+                VALUE(?,?,?,?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('iis', $id, $memberId, $content);
+        $stmt->bind_param('iisi', $id, $memberId, $content, $level);
         break;
     case 'send':
         $sql = "UPDATE $db SET content = ?

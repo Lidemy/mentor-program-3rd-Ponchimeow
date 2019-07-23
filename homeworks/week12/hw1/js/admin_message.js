@@ -54,7 +54,7 @@ qs('.table').addEventListener('click', (e) => {
     default:
       break;
   } if (sendData !== '') {
-    request.open('POST', './handle_admin.php');
+    request.open('POST', './controller/handle_admin.php');
     request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     request.send(sendData);
     window.location.reload();
