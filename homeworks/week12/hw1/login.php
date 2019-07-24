@@ -22,12 +22,12 @@
     <div class="member-info">
       <?php if (isset($_COOKIE["msg"])) {
     echo $_COOKIE["msg"];
-    setcookie("msg", "", time() - 600);
+    setcookie("msg", "", time() - 3600, "/");
 }
 ?>
     </div>
     <div class="member-group login-group">
-      <form method="POST" action="./controller/handle_login.php">
+      <form method="POST" action="./handling/handle_login.php">
           <div class="member-group__field login-group__username">
             <input name="username" autocomplete="off"/>
             <label class="input__label">帳號</label>

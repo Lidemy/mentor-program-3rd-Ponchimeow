@@ -194,6 +194,31 @@ textarea:focus {
   transform: translateY(3px);
 }
 
+/* 讚 like */
+
+.like-btn, .like-btn-liked {
+  margin: auto 5px auto 10px;
+  color: white;
+  height: 22px;
+  line-height: 22px;
+  padding: 1px 3px 1px 3px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.like-btn {
+  background: #006284;
+}
+
+.like-btn-liked {
+  background: #00638460;
+}
+
+.like-count {
+  color: #A28C37;
+}
+
 /* 留言 */
 
 .container {
@@ -218,6 +243,7 @@ textarea:focus {
 }
 
 .message-header__info {
+  display: flex;
   width: 40%;
 }
 
@@ -325,7 +351,7 @@ textarea:focus {
   border-radius: 5px;
 }
 
-.reply{
+.reply {
   display: flex;
   margin-top: 10px;
 }

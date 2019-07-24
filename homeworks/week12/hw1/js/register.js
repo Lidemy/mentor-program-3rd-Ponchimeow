@@ -43,9 +43,11 @@ regSecPwInput.addEventListener('input', () => {
 });
 
 regButton.addEventListener('click', (e) => {
-  if (regNicknameInput.value === '' || regUsernameInput.value === '' || regPwInput.value === '' || regSecPwInput === '') {
+  if (regNicknameInput.value === '' || regUsernameInput.value === '' || regPwInput.value === '' || regSecPwInput.value === '') {
     chkMemberInfo(e, '皆為必填欄位');
-  } else if (!flag) {
+    e.preventDefault();
+  }
+  if (!flag) {
     e.preventDefault();
   }
 });

@@ -18,7 +18,7 @@ if ($username === null) {
             echo "<a class='nav-member-group__nickname'>";
             echo escape($row['nickname']);
             echo "</a>";
-            echo "<a class='nav-member-group__logout' href='./controller/handle_logout.php'>登出</a>";
+            echo "<a class='nav-member-group__logout' href='./handling/handle_logout.php'>登出</a>";
             if (chkAdmin($conn, $username) === 'admin' || chkAdmin($conn, $username) === 'superadmin') {
                 echo "<a class='nav-memmber-group__admin' href='./admin.php'>Admin</a>";
             }

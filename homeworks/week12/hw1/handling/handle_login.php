@@ -16,15 +16,15 @@ $stmt->bind_param('s', $username);
 $stmt->execute();
 $result = $stmt->get_result();
 if ($result->num_rows <= 0) {
-    setcookie("msg", "無此使用者", time() + 3600);
-    header("Location: ./login.php");
+    setcookie("msg", "無此使用者", time() + 3600, "/");
+    header("Location: ../login.php");
     die();
 }
 // 帳號密碼檢驗
 while ($row = $result->fetch_assoc()) {
     $hashPassword = password_verify($password, $row["password"]);
     if (!$hashPassword) {
-        setcookie("msg", "帳號密碼錯誤", time() + 3600);
+        setcookie("msg", "帳號密碼錯誤", time() + 3600, "/");
         header("Location: ../login.php");
         die();
     }

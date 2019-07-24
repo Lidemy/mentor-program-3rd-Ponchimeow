@@ -8,7 +8,7 @@ $secondPassword = $_POST['second-password'];
 
 //密碼檢驗
 if ($password !== $secondPassword) {
-    setcookie("msg", "兩次密碼輸入不同", time() + 600);
+    setcookie("msg", "兩次密碼輸入不同", time() + 3600, "/");
     header("Location: ../register.php");
     die();
 }
@@ -22,7 +22,7 @@ function chkNickname($conn, $nickname)
     $sqlChkNickname = "SELECT nickname FROM Ponchimeow_MsgBoard_member WHERE nickname='" . $nickname . "'";
     $resChkNickname = $conn->query($sqlChkNickname);
     if ($resChkNickname->num_rows !== 0) {
-        setcookie("msg", "註冊暱稱重複", time() + 600);
+        setcookie("msg", "註冊暱稱重複", time() + 3600, "/");
         header("Location: ../register.php");
         die();
     }
@@ -33,7 +33,7 @@ function chkUsername($conn, $username)
     $sqlChkUsername = "SELECT username FROM Ponchimeow_MsgBoard_member WHERE username='" . $username . "'";
     $resChkUsername = $conn->query($sqlChkUsername);
     if ($resChkUsername->num_rows !== 0) {
-        setcookie("msg", "註冊帳號重複", time() + 600);
+        setcookie("msg", "註冊帳號重複", time() + 3600, "/");
         header("Location: ../register.php");
         die();
     }
@@ -50,9 +50,9 @@ try {
     $stmt->bind_param('sss', $nickname, $username, $hashPassword);
     if ($stmt->execute()) {
         $_SESSION['username'] = $username;
-        header('Location: ../login.php');
+        header('Location: ../index.php');
     } else {
-        setcookie("msg", "註冊失敗", time() + 600);
+        setcookie("msg", "註冊失敗", time() + 3600, "/");
         header("Location: ../register.php");
     }
 } catch (Exception $e) {

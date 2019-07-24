@@ -26,7 +26,7 @@
 ?>
     </div>
     <div class="member-group register-group">
-      <form method="POST" action="./controller/handle_register.php">
+      <form method="POST" action="./handling/handle_register.php">
           <div class="member-group__field register-group__nickname"><input name="nickname" autocomplete="off"/><label class="input__label">暱稱 (最多16個字元)</label><span class="bar"></span></div>
           <div class="member-group__field register-group__username"><input name="username" autocomplete="off"/><label class="input__label">帳號</label><span class="bar"></span></div>
           <div class="member-group__field register-group__password"><input name="password" type="password"/><label class="input__label">密碼 (最多16個字元)</label><span class="bar"></span></div>
