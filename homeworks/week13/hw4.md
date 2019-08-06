@@ -10,7 +10,7 @@
 網格中的 column 為固定比例大小，網頁可以網頁可以選擇不同大小的 column 來進行版面的配置，故可以使用 grid 來快速的實現 RWD 配置。
 
 ## 請找出任何一個與 Bootstrap 類似的 library
-[Foundation](oundation.zurb.com)
+[Foundation](https://foundation.zurb.com/)
 
 [6 Popular CSS Frameworks to Use in 2019](https://scotch.io/bar-talk/6-popular-css-frameworks-to-use-in-2019#toc-bulma)
 
@@ -20,5 +20,5 @@
 ## jQuery 與 vanilla JS 的關係是什麼？
 vanilla JS 即為原生 Javascript
 
-Jquery 為 Javascript 的函式庫，將 JS 更簡化，並已包含許多套件，讓使用者能直接使用，進而縮短開發時間
+Jquery 為 Javascript 的函式庫，將 JS 更簡化，並已包含許多套件，讓使用者能直接使用，進而縮短開發時間。
 
