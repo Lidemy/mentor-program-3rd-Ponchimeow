@@ -1,0 +1,46 @@
+.container {
+  margin-top: 30px;
+}
+
+ul li {
+  cursor: pointer;
+}
+
+ul li:hover {
+  background: #78C2C4;
+}
+
+ul li.checked {
+  background: #6699A1;
+  color: white;
+}
+
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 22px;
+  left: 13px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+ul .list-item {
+  margin-left:15px;
+}
+
+ul .list-item.checked {
+  text-decoration: line-through;
+}
+
+.btn-delete {
+  text-decoration: none!important;
+}
+
+.btn-delete:hover {
+  color: white;
+  background: red;
+}

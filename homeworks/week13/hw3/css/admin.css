@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: '微軟正黑體';
+}
+
+.table {
+  display: table;
+}
+
+.tr {
+  display: table-row;
+}
+
+.tr:hover {
+  background: #ccc;
+}
+
+.td {
+  display: table-cell;
+  vertical-align: top;
+  padding: 3px;
+}
+.content{
+  width:350px;
+}
+.msg__td-send, .msg__td-cancel {
+  display: none;
+}
+textarea{
+  resize: none;
+  display: block;
+  background: none;
+  outline: none;
+  width:340px;
+  font-size: 16px;
+}
