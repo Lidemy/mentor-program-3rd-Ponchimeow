@@ -8,7 +8,6 @@ function Stack() {
     arr.splice(arr.length - 1, 1);
     return res;
   };
-  this.arr = arr;
 }
 
 function Queue() {
@@ -21,7 +20,6 @@ function Queue() {
     arr.splice(0, 1);
     return res;
   };
-  this.arr = arr;
 }
 
 // ----- test -----
@@ -31,9 +29,7 @@ stack.push(10);
 stack.push(5);
 stack.push(1);
 console.log('----- Stack -----');
-console.log(stack.arr); // [ 10, 5, 1 ]
 console.log(stack.pop()); // 1
-console.log(stack.arr); // [ 10, 5 ]
 console.log(stack.pop()); // 5
 
 
@@ -42,7 +38,5 @@ queue.push(1);
 queue.push(2);
 queue.push(5);
 console.log('----- Queue -----');
-console.log(queue.arr); // [ 1, 2, 5 ]
 console.log(queue.pop()); // 1
-console.log(queue.arr); // [ 2, 5 ]
 console.log(queue.pop()); // 2
