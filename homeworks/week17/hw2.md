@@ -21,7 +21,7 @@ call stack
      VO: {
         i: undefined
      },
-     scopeChain: [ global.VO ],
+     scopeChain: [ globalEC.VO ],
      this:...
    }
 ```
@@ -34,12 +34,12 @@ call stack
 ```javascript
 call stack
 
-function.__scope__ = [ global.VO ]
+functionEC.__scope__ = [ global.VO ]
 
   functionEC: {
     AO:{
     },
-    scopeChain: [ function.AO, global.VO ],
+    scopeChain: [ functionEC.AO, globalEC.VO ],
     this: ...
   }
 
@@ -47,7 +47,7 @@ function.__scope__ = [ global.VO ]
     VO: {
        i: 0
     },
-    scopeChain: [ global.VO ],
+    scopeChain: [ globalEC.VO ],
     this: ...
   }
 ```
