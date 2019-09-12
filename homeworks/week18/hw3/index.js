@@ -4,13 +4,10 @@ let itemId = 0;
 function render() {
   $('.list-group').empty();
   $('.list-group').append(list.map((item) => {
-    let classCheck = '';
-    if (item.check) {
-      classCheck = 'checked';
-    }
+    const check = item.check ? 'checked' : '';
     return `
-    <li class="list-group-item d-flex justify-content-between align-items-center ${classCheck}"  data-id="${item.id}">
-    <div class="list-item ${classCheck} ">${item.content}</div>
+    <li class="list-group-item d-flex justify-content-between align-items-center ${check}"  data-id="${item.id}">
+    <div class="list-item ${check} ">${item.content}</div>
     <div class="btn btn-delete">X</div>
     </li>       
     `;
