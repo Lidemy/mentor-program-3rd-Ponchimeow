@@ -1,0 +1,88 @@
+FORMAT: 1A
+HOST: http://ponchimeow.com.tw/api/
+
+# API Document
+
+
+# Group Todo List API
+具備基礎 CURD 功能的代辦事項列表 API
++ id： todo id，
++ content： todo 事項
++ status： todo 狀態，0 為未完成，1 為已完成
+|id|||
+|-|-|-|
+||||
+
+## Todo list [/todo]
+
+### 獲取所有 todo [GET]
+
+取出所有 todo 資料
+
++ Response 200 (application/json;charset=UTF-8)
+
+        [
+            {
+                "id": 1,
+                "content": "待辦事項",
+                "status": 0,
+                "create_at": "2019-09-18 07:31:13",
+            },
+            {
+                "id": 2,
+                "content": "待辦事項",
+                "status": 0,
+                "create_at": "2019-09-18 08:22:04",
+            }
+        ]
+
+### 獲取單筆 todo [GET /todo{?id}]
+
+取出單筆 todo 資料
+
++ Parameters
+  + id: `1` (integer,required) - 取出資料的 id
+
++ Response 200 (application/json;charset=UTF-8)
+
+        {
+            "id": 1,
+            "content": "待辦事項",
+            "status": 0,
+            "create_at": "2019-09-18 07:31:13",
+        }
+
+### 刪除單筆 todo [DELETE /todo{?id}]
+
+刪除單筆 todo 資料
+
++ Parameters
+  + id: `1` (integer,required) - 被刪除資料的 id
+
++ Response 200
+
+### 新增單筆 todo [POST /todo]
+
+新增單筆 todo 資料
+
++ Request with body (application/json;charset=UTF-8)
+
+        {
+            "id": 3,
+            "content": "待辦事項",
+        }
+
++ Response 200
+
+### 修改單筆 todo [PATCH]
+修改 todo 內容，是否已完成
+
++ Request with body (application/json;charset=UTF-8)
+
+        {
+            "id": 1,
+            "content": "已完成事項",
+            "status": 1,
+        }
+
++ Response 200
