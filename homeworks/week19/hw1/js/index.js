@@ -1,4 +1,4 @@
-const url = 'http://ponchimeow.com.tw/todolist/api.php';
+const url = 'https://ponchimeow.com.tw/todolist/api.php';
 
 function render() {
   $.ajax({
@@ -57,10 +57,9 @@ function del(id) {
 function edit(id, text) {
   $.ajax({
     type: 'PATCH',
-    url,
+    url: `${url}?id=${id}`,
     data: {
       case: 'edit',
-      id,
       content: text,
     },
   }).done(() => {
@@ -74,10 +73,9 @@ function edit(id, text) {
 function status(id) {
   $.ajax({
     type: 'PATCH',
-    url,
+    url: `${url}?id=${id}`,
     data: {
       case: 'status',
-      id,
     },
   }).done(() => {
   }).fail((err) => {

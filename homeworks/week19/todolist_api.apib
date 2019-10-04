@@ -1,12 +1,12 @@
 FORMAT: 1A
-HOST: http://ponchimeow.com.tw/api/
+HOST: http://ponchimeow.com.tw/api
 
 # API Document
 
 
 # Group Todo List API
 具備基礎 CURD 功能的代辦事項列表 API
-+ id： todo id，
++ id： 事項 id
 + content： todo 事項
 + status： todo 狀態，0 為未完成，1 為已完成
 
@@ -71,13 +71,15 @@ HOST: http://ponchimeow.com.tw/api/
 
 + Response 200
 
-### 修改單筆 todo [PATCH]
+### 修改單筆 todo [PATCH /todo{?id}]
 修改 todo 內容，是否已完成
+
++ Parameters
+  + id: `1` (integer,required) - 被刪除資料的 id
 
 + Request with body (application/json;charset=UTF-8)
 
         {
-            "id": 1,
             "content": "已完成事項",
             "status": 1,
         }

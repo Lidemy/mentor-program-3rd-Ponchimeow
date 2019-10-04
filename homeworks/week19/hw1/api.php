@@ -30,12 +30,13 @@ switch ($method) {
         $data = file_get_contents('php://input');
         parse_str($data, $res);
         extract($res);
-        var_dump($res);
-        if ($case === 'edit') {
-            update($conn, $id, $content);
-        }
-        if ($case === 'status') {
-            switchStatus($conn, $id);
+        if (isset($_GET['id'])) {
+            if ($case === 'edit') {
+                update($conn, $_GET['id'], $content);
+            }
+            if ($case === 'status') {
+                switchStatus($conn, $_GET['id']);
+            }
         }
         break;
     case 'OPTIONS':
