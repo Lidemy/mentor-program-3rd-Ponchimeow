@@ -41,5 +41,5 @@ fork 專案後於 Settings -> GitHub Pages -> Source -> Master branch -> 產生 
 7. 最後的測試如下，錢錢從五個變兩個，[PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) 測試則是從行動版 23 分與電腦版 68 分，提升至行動版 89 分與電腦版 99 分
    ![](img/final.png)
 
-Ｗeek21 終於要進到框架，希望在學習上還行
+Ｗeek21 終於要進到框架，希望在學習上還行，只是單純覺得是必要的技能，雖然每個都很重要就是w
 
