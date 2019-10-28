@@ -28,9 +28,11 @@
   },
   "homepage": "https://github.com/aszx87410/program-3rd#readme",
   "dependencies": {
+    "css-loader": "^3.2.0",
     "gulp": "^4.0.2",
     "gulp-sass": "^4.0.2",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "style-loader": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
