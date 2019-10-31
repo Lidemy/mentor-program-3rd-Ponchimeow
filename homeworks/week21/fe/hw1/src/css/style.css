@@ -58,6 +58,16 @@ body {
   background-color: #6E75A4;
 }
 
+.filter {
+  cursor: pointer;
+  margin-left: 10%;
+  width:83%;
+}
+
+.count {
+  float: right;
+}
+
 .list-group {
   margin-top: 20px;
 }
@@ -78,7 +88,7 @@ body {
   cursor: pointer;
   font-size: 20px;
   user-select: none;
-  line-height: 36px;
+  line-height: 30px;
 }
 
 .list-group li .checkbox {
@@ -104,17 +114,6 @@ body {
   background-color: #F6C555;
 }
 
-/* item-input 編輯時可見 */
-
-.list-group li .item-input {
-  display: none;
-  font-size: 20px;
-}
-
-.list-group li .item-input:focus {
-  outline: none;
-}
-
 /* check */
 
 .checkmark:after {
@@ -136,14 +135,21 @@ body {
 
 /* item-input 事項編輯框 */
 
-.item-input {
+.list-group li .item-input {
   position: absolute;
+  display: none;
+  font-size: 20px;
   left: 39px;
   border: none;
   outline-style: none;
   width: 65%;
   line-height: 33px;
   color: #3A8FB7;
+  top: 0px;
+}
+
+.list-group li .item-input:focus {
+  outline: none;
 }
 
 /* btn */
@@ -195,13 +201,13 @@ body {
 .list-group li .btn-save {
   position: absolute;
   height: 100%;
-  top: 50%;
+  top: 0%;
   right: 50px;
   opacity: 1;
   width: 0;
   width: var(--list-btn-width);
   background-color: #113285;
-  display: none;
+  /* display: none; */
 }
 
 .list-group li .btn-save.active {
@@ -267,13 +273,13 @@ body {
 .list-group li .btn-cancel {
   position: absolute;
   height: 100%;
-  top: 50%;
+  top: 0%;
   right: 0;
   opacity: 1;
   width: 0;
   width: var(--list-btn-width);
   background-color: #FFB11B;
-  display: none;
+  /* display: none; */
 }
 
 .list-group li .btn-cancel.active {
