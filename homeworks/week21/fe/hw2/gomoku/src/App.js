@@ -234,7 +234,7 @@ class Chess extends Component {
 
   render() {
     const { chessLogs } = this.state;
-    // const en = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S'];
+    const en = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S'];
     const winner = this.checkWin(chessLogs);
     return (
       <div>
@@ -255,8 +255,8 @@ class Chess extends Component {
             <div className='history'>
               <div className='history__btn restart' onClick={() => this.handleMove(0)} >#0 Start</div>
               {chessLogs.map((log, index) => (
-                // <div className='history__btn' key={index + 1} onClick={() => this.handleMove(index + 1)}>#{index + 1}  {log.x}, {en[log.y - 1]}</div>
-                <div className='history__btn' key={index + 1} onClick={() => this.handleMove(index + 1)}>#{index + 1}  {log.x}, {log.y}</div>
+                <div className='history__btn' key={index + 1} onClick={() => this.handleMove(index + 1)}>#{index + 1}  {log.x}, {en[log.y - 1]}</div>
+                // <div className='history__btn' key={index + 1} onClick={() => this.handleMove(index + 1)}>#{index + 1}  {log.x}, {log.y}</div>
               ))}
             </div>
           </div>

@@ -1,0 +1,146 @@
+*, *:after, *::before {
+  margin: 0px;
+  font-family: 'Raleway', sans-serif;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+#root {
+  min-height: 100%
+}
+
+header {
+  position: fixed;
+  width: 100%;
+}
+
+.container {
+  height: 50px;
+  margin: 0 auto;
+  background: #FEDFE1;
+}
+
+.header__img {
+  float: left;
+  width: 45px;
+  height: 45px;
+  background-image: url('./img/blackcat.svg');
+  margin: 2.5px 0px 2.5px 40px;
+}
+
+nav {
+  float: right;
+  padding: 0px 30px;
+}
+
+ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+nav li {
+  padding: 10px 10px;
+  float: left;
+}
+
+nav a {
+  padding: 0 10px;
+  outline: none;
+  text-decoration: none;
+  color: #E87A90;
+  letter-spacing: 1px;
+  font-weight: 700;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+  font-size: 1.35em;
+}
+
+nav a:hover, nav a:focus {
+  outline: none;
+  color: #DB4D6D;
+}
+
+nav ul li a::before, nav ul li a::after {
+  display: inline-block;
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.2s;
+}
+
+nav ul li a::before {
+  margin-right: 10px;
+  content: '[';
+  transform: translateX(20px);
+}
+
+nav ul li a::after {
+  margin-left: 10px;
+  content: ']';
+  transform: translateX(-20px);
+}
+
+nav ul li a:hover::before, nav ul li a:hover::after, nav ul li a:focus::before, nav ul li a:focus::after {
+  opacity: 1;
+  transform: translateX(0px);
+  color: #DB4D6D;
+}
+
+main {
+  margin-top: 50px;
+  position: fixed;
+  height: 760px;
+  width: 100%;
+  background-image: url('./img/river.JPG');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-color: #FEDFE1;
+  overflow: scroll;
+}
+
+.about {
+  margin-top: 290px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.list__group {
+  margin: 0 auto;
+  width: 40%;
+}
+
+.list {
+  background-color: #B5CAA0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 600;
+  padding-left: 10px;
+  opacity: 0.5;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.list:first-child {
+  margin-top: 30px;
+}
+
+.list:not(:first-child) {
+  margin-top: 40px;
+}
+
+.list:hover {
+  opacity: 1;
+}
+
+footer {
+  height: 35px;
+  background-color: #FEDFE1;
+  color: #D0104C;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  line-height: 35px;
+}
