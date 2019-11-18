@@ -111,13 +111,15 @@ class Chess extends Component {
     }
     const xAxis = e.nativeEvent.offsetX;
     const yAxis = e.nativeEvent.offsetY;
+    // 越界
     if (xAxis < 20 || xAxis > 580 || yAxis < 20 || yAxis > 580) {
-      return console.log('out of range')
+      return;
     }
     const x = Math.round(xAxis / 30)
     const y = Math.round(yAxis / 30)
+    // 同位
     if (chessLogs.find(log => log.x === x && log.y === y)) {
-      return console.log('same')
+      return;
     }
     const chess = [...chessLogs, { x, y }];
     this.setState({
@@ -256,7 +258,6 @@ class Chess extends Component {
               <div className='history__btn restart' onClick={() => this.handleMove(0)} >#0 Start</div>
               {chessLogs.map((log, index) => (
                 <div className='history__btn' key={index + 1} onClick={() => this.handleMove(index + 1)}>#{index + 1}  {log.x}, {en[log.y - 1]}</div>
-                // <div className='history__btn' key={index + 1} onClick={() => this.handleMove(index + 1)}>#{index + 1}  {log.x}, {log.y}</div>
               ))}
             </div>
           </div>

@@ -22,8 +22,8 @@ function About() {
           </path>
         </pattern>
       </defs>
-      <text textAnchor="middle" x="50" y="15" fill="url(#gradient)" fillOpacity="0.4">{about}</text>
-      <text textAnchor="middle" x="50" y="15" fill="url(#wave)" fillOpacity="0.7">{about}</text>
+      <text textAnchor="middle" x="50" y="15" fill="url(#gradient)" fillOpacity="0.5">{about}</text>
+      <text textAnchor="middle" x="50" y="15" fill="url(#wave)" fillOpacity="0.8">{about}</text>
     </svg>
   </div>
 }
@@ -34,24 +34,8 @@ class List extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      id: null,
       articles: []
     };
-
-    this.handleArticle = this.handleArticle.bind(this);
-    this.handleBack = this.handleBack.bind(this);
-  }
-
-  handleArticle(articleId) {
-    this.setState({
-      id: articleId,
-    })
-  }
-
-  handleBack() {
-    this.setState({
-      id: null,
-    })
   }
 
   componentDidMount() {
@@ -61,51 +45,98 @@ class List extends Component {
         (result) => {
           this.setState({
             isLoaded: true,
-            articles: result
+            articles: result,
           });
-        },
+        }
+      ).then(
         (error) => {
           this.setState({
+            error,
             isLoaded: true,
-            error
           });
         }
       )
   }
 
   render() {
-    const { error, isLoaded, articles, id } = this.state;
-    const article = articles.find(article => article.id == id);
-    console.log(id)
+    const { error, isLoaded, articles } = this.state;
+    const { handleArticle } = this.props;
     if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
+      return <div>{error}</div>;
+    }
+    else if (!isLoaded) {
+      return <div className='loading'>loading...</div>;
+    }
+    else {
       return (
-        <div className={id === null ? 'list__group' : 'article'}>
-
-          {id === null ? articles.map(article => (
-            <div key={article.id} className='list' onClick={() => this.handleArticle(article.id)}>
+        <div className='list__group'>
+          {articles.map(article =>
+            <div key={article.id} className='list' onClick={(e) => handleArticle(e, article.id, 'article')}>
               {article.title}
-            </div>
-          ))
-            :
-            <div className='article'>
-              <div className='article__title'>
-                {article.title}
-              </div>
-              <div>
-                {article.body}
-              </div>
-              <div>
-                {article.userId}
-              </div>
-              <button onClick={this.handleBack}>Back</button>
-            </div>
-          }
+            </div>)}
         </div >
       );
+    }
+  }
+}
+
+class Article extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      article: []
+    };
+    this.id = this.props;
+    this.handleBack = this.handleBack.bind(this);
+  }
+
+  handleBack() {
+    this.id = '';
+  }
+
+  componentDidMount() {
+    const { id } = this.props;
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            article: result
+          });
+        }
+      ).then(
+        (error) => {
+          this.setState({
+            error,
+            isLoaded: true,
+          });
+        }
+      )
+  }
+
+  render() {
+    const { error, isLoaded, article } = this.state;
+    const { handleArticle } = this.props;
+    if (error) {
+      return <div>{error}</div>;
+    }
+    else if (!isLoaded) {
+      return <div className='loading'>loading...</div>;
+    }
+    else {
+      return (
+        <div className='article'>
+          <div className='article__title'>
+            Title: {article.title}
+          </div>
+          <div className='article__content'>
+            {article.body}
+          </div>
+          <div className='article__user'>
+            User: {article.userId}
+          </div>
+          <button onClick={(e) => handleArticle(e, '', '')}>Back</button>
+        </div>)
     }
   }
 }
@@ -114,16 +145,29 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      post: 'list',
+      post: '',
     }
+    this.id = null;
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleArticle = this.handleArticle.bind(this);
   }
 
-  handleClick(e, y) {
+  handleArticle(e, id, post) {
     this.setState({
-      post: e.target.name,
+      post,
     })
+    this.id = id
+  }
+
+  switchPost = (post) => {
+    switch (post) {
+      case 'about':
+        return <About />
+      case 'article':
+        return <Article id={this.id} handleArticle={this.handleArticle} />
+      case '': default:
+        return <List handleArticle={this.handleArticle} />
+    }
   }
 
   render() {
@@ -133,24 +177,22 @@ class App extends Component {
         <header>
           <div className="container">
             <div className='header__img'></div>
-            <nav>
-              <ul>
-                <li>
-                  <a onClick={this.handleClick} name='about'>ABOUT</a>
-                </li>
-                <li>
-                  <a onClick={(e) => this.handleClick(e, null)} name='list'>LIST</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </header>
+            <div className='navbar'>
+              <div className='navbar__btn navbar__btn__about' onClick={(e) => this.handleArticle(e, '', 'about')}>
+                ABOUT
+              </div>
+              <div className='navbar__btn navbar__btn__list' onClick={(e) => this.handleArticle(e, '', '')}>
+                LIST
+              </div>
+            </div>
+          </div >
+        </header >
         <main>
-          {post === 'about' ? <About /> : ''}
-          {post === 'list' ? <List /> : ''}
+          <div className='main__background'></div>
+          <div className='main__content'>{this.switchPost(post)}</div>
         </main>
         <footer>Made by Ponchimeow</footer>
-      </div>
+      </div >
     );
   }
 }
