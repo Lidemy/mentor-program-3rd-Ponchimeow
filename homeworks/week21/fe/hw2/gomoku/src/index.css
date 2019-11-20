@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+}
+
+.wrapper {
+  position: relative;
+  background-color: bisque;
+  left: 30px;
+  top: 50px;
+}
+
+canvas {
+  position: absolute;
+}
+
+#board {
+  border: 2px solid black;
+  background-color: rgba(255, 187, 0, 0.966);
+}
+
+#chess {
+  margin: 2px;
+}
+
+.control {
+  position: absolute;
+  left: 650px;
+  text-align: center;
+  width: 200px;
+  height: 600px;
+  margin-top: 2px;
+  font-weight: 700;
+}
+
+.btn__group {
+  height: 578px;
+}
+
+.history__btn {
+  cursor: pointer;
+}
+
+.history__btn:hover {
+  color: #006284;
+}
+
+.tip {
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  width: 100%;
+}
