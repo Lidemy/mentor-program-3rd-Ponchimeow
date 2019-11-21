@@ -103,8 +103,7 @@ class Article extends Component {
           this.setState({
             article: result
           });
-        }
-      ).then(
+        },
         (error) => {
           this.setState({
             error,
