@@ -151,38 +151,36 @@ class Chess extends Component {
         return true;
       }
     }
-    // 右
-    if (a < 19) {
+    if (a < 19 && a > 1 && b < 19 && b > 1) {
+      // 右
       while (squares[a - 1][b - 1] === squares[a][b - 1]) {
         sum++;
         a++;;
       }
       a = x;
-    }
-    // 左
-    while (squares[a - 1][b - 1] === squares[a - 2][b - 1]) {
-      sum++;
-      a--;
-    }
-    if (check()) {
-      return last;
-    }
-    // 上
-    while (squares[a - 1][b - 1] === squares[a - 1][b]) {
-      sum++;
-      b++;
-    }
-    b = y;
-    // 下
-    while (squares[a - 1][b - 1] === squares[a - 1][b - 2]) {
-      sum++;
-      b--;
-    }
-    if (check()) {
-      return last;
-    }
-    // 右上
-    if (a < 19 && b > 1) {
+      // 左
+      while (squares[a - 1][b - 1] === squares[a - 2][b - 1]) {
+        sum++;
+        a--;
+      }
+      if (check()) {
+        return last;
+      }
+      // 上
+      while (squares[a - 1][b - 1] === squares[a - 1][b]) {
+        sum++;
+        b++;
+      }
+      b = y;
+      // 下
+      while (squares[a - 1][b - 1] === squares[a - 1][b - 2]) {
+        sum++;
+        b--;
+      }
+      if (check()) {
+        return last;
+      }
+      // 右上
       while (squares[a - 1][b - 1] === squares[a][b]) {
         sum++;
         a++;
@@ -190,36 +188,35 @@ class Chess extends Component {
       }
       a = x;
       b = y;
-    }
-    // 左下
-    while (squares[a - 1][b - 1] === squares[a - 2][b - 2]) {
-      sum++;
-      a--;
-      b--;
-    }
-    if (check()) {
-      return last;
-    }
-    // 左上
-    while (squares[a - 1][b - 1] === squares[a - 2][b]) {
-      sum++;
-      a--;
-      b++;
-    }
-    a = x;
-    b = y;
-    // 右下
-    while (squares[a - 1][b - 1] === squares[a][b - 2]) {
-      sum++;
-      a++;
-      b--;
-    }
-    if (check()) {
-      return last;
+      // 左下
+      while (squares[a - 1][b - 1] === squares[a - 2][b - 2]) {
+        sum++;
+        a--;
+        b--;
+      }
+      if (check()) {
+        return last;
+      }
+      // 左上
+      while (squares[a - 1][b - 1] === squares[a - 2][b]) {
+        sum++;
+        a--;
+        b++;
+      }
+      a = x;
+      b = y;
+      // 右下
+      while (squares[a - 1][b - 1] === squares[a][b - 2]) {
+        sum++;
+        a++;
+        b--;
+      }
+      if (check()) {
+        return last;
+      }
     }
     return '';
   }
-
   handleMove(step) {
     const { chessLogs, winner } = this.state;
     if (winner !== '') {
