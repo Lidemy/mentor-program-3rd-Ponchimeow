@@ -8,7 +8,7 @@ import {
 function About() {
   const about = '五十鈴川';
   return <div className='about'>
-    <svg className='svg-about' width="400" height="200" viewBox="30 -5 40 40">
+    <svg className='svg-about' width="400" height="200" viewBox="30 -10 40 40">
       <defs>
         <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
           <stop offset="10%" stopColor="#58B2DC" />
