@@ -120,7 +120,7 @@ class App extends Component {
         </div>
         <div className="list-group">
           <div className="filters">
-            <div className="filter filter__all" onClick={() => {
+            <div className={`filter ${filter === 'all' ? 'active' : ''}`} onClick={() => {
               this.setState({
                 filter: 'all'
               })
@@ -129,7 +129,7 @@ class App extends Component {
                 {todos.length}
               </span>
             </div>
-            <div className="filter filter__done" onClick={() => {
+            <div className={`filter ${filter === 'done' ? 'active' : ''}`} onClick={() => {
               this.setState({
                 filter: 'done'
               })
@@ -138,7 +138,7 @@ class App extends Component {
                 {(todos.filter(todo => todo.status)).length}
               </span>
             </div>
-            <div className="filter filter__undone" onClick={() => {
+            <div className={`filter ${filter === 'undone' ? 'active' : ''}`} onClick={() => {
               this.setState({
                 filter: 'undone'
               })

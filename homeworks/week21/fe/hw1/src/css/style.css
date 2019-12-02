@@ -61,7 +61,13 @@ body {
 .filter {
   cursor: pointer;
   margin-left: 10%;
-  width:83%;
+  padding-right: 7%;
+}
+
+.active {
+  background-color: #164A84;
+  border-radius: 5px;
+  opacity: 0.7;
 }
 
 .count {
